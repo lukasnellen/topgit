@@ -331,11 +331,11 @@ setup_pager()
 # Setup extended sed ("extsed") for this system
 setup_extsed() {
     unset extsed
-    _gnu_sed_flag=`echo foo | sed -r -e s/foo+/OK/ 2>&1 | grep OK`
+    _gnu_sed_flag=`echo foo | sed -r -e s/foo+/OK/ 2>&1 | grep OK || true`
     if [ "x$_gnu_sed_flag" = "xOK" ] ; then
         extsed="sed -r"
     else
-        _bsd_sed_flag=`echo foo | sed -E -e s/foo+/OK/ 2>&1 | grep OK`
+        _bsd_sed_flag=`echo foo | sed -E -e s/foo+/OK/ 2>&1 | grep OK || true`
         if [ "x$_bsd_sed_flag" = "xOK" ] ; then
             extsed="sed -E"
         fi
