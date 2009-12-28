@@ -1,6 +1,6 @@
-From: John Whitley <whitley@bangpath.org>
-Subject: [PATCH] t/bsdsed
+From: Lukas Nellen <lukas@nucleares.unam.mx>
+Subject: [PATCH] t/bsdsed-snowleopard
 
-Make topgit handle BSD vs. GNU sed.
+Extra fix to make topgit work on OS X 10.6
 
-Signed-off-by: John Whitley <whitley@bangpath.org>
+Signed-off-by: Lukas Nellen <lukas@nucleares.unam.mx>
