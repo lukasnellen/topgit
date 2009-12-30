@@ -1,0 +1,6 @@
+From: Lukas Nellen <lukas@nucleares.unam.mx>
+Subject: [PATCH] t/use-git-pager
+
+See if core.pager configuration variable set and use it for pager.
+
+Signed-off-by: Lukas Nellen <lukas@nucleares.unam.mx>
