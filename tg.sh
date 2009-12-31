@@ -282,7 +282,7 @@ do_help()
 	fi
 }
 
-## Pager stuff
+ ## Pager stuff
 
 # isatty FD
 isatty()
@@ -298,6 +298,8 @@ setup_pager()
 
 	# TG_PAGER = GIT_PAGER | PAGER | less
 	# NOTE: GIT_PAGER='' is significant
+	[ -n "$GIT_PAGER" ] || GIT_PAGER=`git config --get core.pager` || \
+          unset GIT_PAGER
 	TG_PAGER=${GIT_PAGER-${PAGER-less}}
 
 	[ -z "$TG_PAGER"  -o  "$TG_PAGER" = "cat" ]  && return 0
@@ -310,7 +312,7 @@ setup_pager()
 	_pager_fifo="$_pager_fifo_dir/0"
 	mkfifo -m 600 "$_pager_fifo"
 
-	"$TG_PAGER" < "$_pager_fifo" &
+	$TG_PAGER < "$_pager_fifo" &
 	exec > "$_pager_fifo"		# dup2(pager_fifo.in, 1)
 
 	# this is needed so e.g. `git diff` will still colorize it's output if
